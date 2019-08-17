@@ -18,11 +18,22 @@ class PostManager
 
         return $post;
     }
+//******************************************** */
+public function postArticle($title,$content)
+    {
+        $db = $this->dbConnect();
+        $post = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES(?, ?, NOW())');
+        $affectedLines = $post->execute(array($title,$content));
+
+        return $affectedLines;
+    }
+
+//***************************************************************** */
 
 
     private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '');
+        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '',[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
         return $db;
     }
 }

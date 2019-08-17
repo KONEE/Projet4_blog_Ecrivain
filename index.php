@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -14,6 +15,17 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        //********************* */
+        elseif ($_GET['action'] == 'postArticle') {
+            
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                addPosts($_POST['title'],$_POST['content']);
+            }
+            else {
+                require('view/frontend/adminView.php');
+            }
+        }
+        //*********************************** */
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
