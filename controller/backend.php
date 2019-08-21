@@ -30,10 +30,10 @@ function addPosts($title, $content)
     }
 }
 
-function deletePost($id){
+function deletePost($postId){
     $PostManager = new PostManager();
 
-    $affectedLines = $PostManager->deleteArticle($id);
+    $affectedLines = $PostManager->deleteArticle($postId);
 
     
     if ($affectedLines === false) {

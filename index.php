@@ -31,7 +31,7 @@ try {
         }
         elseif ($_GET['action'] == 'deleteArticle') { //si action = fonction 'deleteArticle' dans PostManager
             if(isset($_GET['id']) && $_GET['id'] > 0){
-                deletPost($_GET['id']); // appel fction de backend
+                deletePost($_GET['id']); // appel fction de backend
             }
             else {
                 listPostsAdmin();
