@@ -15,6 +15,11 @@
 
 <!-- Custom styles for this template -->
 <link href="public/css/clean-blog.min.css" rel="stylesheet">
+
+<!--tinyMce -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+
     </head>
         
     <body>

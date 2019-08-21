@@ -18,7 +18,8 @@ class PostManager
 
         return $post;
     }
-//******************************************** */
+//******************************************** ajout*/
+//ajouter un article
 public function postArticle($title,$content)
     {
         $db = $this->dbConnect();
@@ -27,7 +28,21 @@ public function postArticle($title,$content)
 
         return $affectedLines;
     }
+// Supprime un article
+public function deleteArticle($id) {
+    $bdd = $this->dbConnect();
+    $post = $bdd->prepare("DELETE FROM post WHERE id=".$_GET['id']);
+    $affectedLines = $post->execute(array($postId));
+    return $affectedLines;
+}
+// editer un artticle 
+public function editArticle($title,$content,$id){
+    $bdd = $this->dbConnect();
+    $post = $db->prepare("UPDATE post SET title = ?, content = ? WHERE id = ?'");
+    $post = $req->execute(array($title, $content, $id));
+    return $post;
 
+}
 //***************************************************************** */
 
 
@@ -37,3 +52,4 @@ public function postArticle($title,$content)
         return $db;
     }
 }
+

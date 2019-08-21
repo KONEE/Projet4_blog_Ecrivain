@@ -27,7 +27,7 @@
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
-        <input type="submit" />
+        <input type="submit" value="Ajouter Votre commentaire"/>
     </div>
 </form>
 

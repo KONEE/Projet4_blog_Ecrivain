@@ -1,55 +1,71 @@
 
-<!---
-<?php //$title = 'admin'; ?>
 
-<?php //ob_start(); ?>
+<?php $title = 'admin'; ?>
+
+<?php ob_start(); ?>
 
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
 
 
-<h2>Nouveau article</h2>
-
 <form action="index.php?action=postArticle" method="post">
-    <div>
-        <label for="title">Titre</label><br />
-        <input type="text" id="title" name="title" />
-    </div>
-    <div>
-        <label for="article">Contenu</label><br />
-        <textarea id="article" name="article"></textarea>
-    </div>
-    <div>
-        <input type="submit" />
-    </div>
-</form>-->
+        <div>
+            <label for="title">Titre</label><br />
+            <input type="text" id="title" name="title" />
+        </div>
+        <div>
+            <label for="content">Contenu</label><br />
+            <textarea id="content" name="content"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Ajouter"/>
+        </div>
+    </form>
+    <h2>Liste des articles</h2>
+    <?php
+    while ($data = $posts->fetch())
+    {
+    ?>
+    <div class="container">
+        
+                
+        <table class="table table-striped table-dark">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date de creation</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><?= htmlspecialchars($data['title']) ?></td>
+                <td><?= nl2br(($data['content'])) ?></td>
+                <td><?= $data['creation_date_fr']?></td>
+                <td><em><a href="index.php?action=deleteArticle"><i class="fas fa-trash-alt"></i></a></em>
+                    <em><a href="index.php?action=editArticle"><i class="far fa-edit"></i></a></em>
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+        </div>
+
+        <?php
+        }
+        $posts->closeCursor();
+        ?>
+  
+<?php  $content = ob_get_clean(); ?>
+
+<?php  require('template.php'); ?>
 
 
   
-<?php // $content = ob_get_clean(); ?>
 
-<?php // require('template.php'); ?>
+            
+    
 
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
-</head>
-<body>
-<form action="index.php?action=postArticle" method="post">
-    <div>
-        <label for="title">Titre</label><br />
-        <input type="text" id="title" name="title" />
-    </div>
-    <div>
-        <label for="content">Contenu</label><br />
-        <textarea id="content" name="content"></textarea>
-    </div>
-    <div>
-        <input type="submit" />
-    </div>
-</form>-->
 
-</body>
-</html>

@@ -1,4 +1,5 @@
 <?php
+//**controller */
 require('controller/frontend.php');
 require('controller/backend.php');
 
@@ -16,13 +17,35 @@ try {
             }
         }
         //********************* */
-        elseif ($_GET['action'] == 'postArticle') {
+        elseif ($_GET['action'] == 'postArticle') { //si action = fonction 'postArticle dans PostManager
             
             if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                addPosts($_POST['title'],$_POST['content']);
+                addPosts($_POST['title'],$_POST['content']); // appel fction de frontend
+                
             }
             else {
-                require('view/frontend/adminView.php');
+                listPostsAdmin();
+                //require('view/frontend/adminView.php');
+                
+            }
+        }
+        elseif ($_GET['action'] == 'deleteArticle') { //si action = fonction 'deleteArticle' dans PostManager
+            if(isset($_GET['id']) && $_GET['id'] > 0){
+                deletPost($_GET['id']); // appel fction de backend
+            }
+            else {
+                listPostsAdmin();
+                //require('view/frontend/adminView.php');
+            }
+        }
+        elseif ($_GET['action'] == 'editArticle') {
+            
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                editPost($_GET['title'],$_GET['content'],$_GET['id']);
+            }
+            else {
+                listPostsAdmin();
+                //require('view/frontend/adminView.php');
             }
         }
         //*********************************** */
