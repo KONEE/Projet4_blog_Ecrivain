@@ -44,7 +44,7 @@
                 <td><?= nl2br(($data['content'])) ?></td>
                 <td><?= $data['creation_date_fr']?></td>
                 <td><em><a href="index.php?action=deleteArticle&amp;id=<?= $data['id']?>"><i class="fas fa-trash-alt"></i></a></em>
-                    <em><a href="index.php?action=editArticle"><i class="far fa-edit"></i></a></em>
+                    <em><a href="index.php?action=editArticle&amp;title=<?= $data['title']?>&amp;content<?= $data['content']?>&amp;id<?= $data['id']?>"><i class="far fa-edit"></i></a></em>
                     
                 </td>
             </tr>

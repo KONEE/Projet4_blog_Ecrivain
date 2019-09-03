@@ -38,3 +38,5 @@ function addComment($postId, $author, $comment)
     }
 }
 
+function showAbout(){ }
+function showContact(){}

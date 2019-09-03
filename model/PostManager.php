@@ -39,10 +39,11 @@ public function deleteArticle($postId) {
 public function editArticle($title,$content,$id){
     $bdd = $this->dbConnect();
     $post = $db->prepare("UPDATE post SET title = ?, content = ? WHERE id = ?'");
-    $post = $req->execute(array($title, $content, $id));
+    $post = $req->execute(array($title, $content, $postId));
     return $post;
 
 }
+
 //***************************************************************** */
 
 

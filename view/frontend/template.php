@@ -18,8 +18,9 @@
 
 <!--tinyMce -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
-
+  <script>tinymce.init({ selector:'#content' });</script>
+<!--chatbot-->
+<script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(70554)</script> 
     </head>
         
     <body>
@@ -37,13 +38,13 @@
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="view/frontend/about.php">About</a>
+                        <a class="nav-link" href="index.php?action=showAbout">About</a>
                     </li>
                   <!--  <li class="nav-item">
                         <a class="nav-link" href="post.html">Post</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="index.php?action=showContact">Contact</a>
                     </li>
                     </ul>
                 </div>

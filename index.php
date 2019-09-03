@@ -48,6 +48,19 @@ try {
                 //require('view/frontend/adminView.php');
             }
         }
+        elseif ($_GET['action'] == 'showAbout'){
+            require('view/frontend/about.php');
+        }
+        elseif ($_GET['action'] == 'showContact'){
+            require('view/frontend/contact.php');
+        }
+        elseif ($_GET['action'] == 'sendMessages') { 
+            
+            
+           sendMail($_POST["name"],$_POST['email'],$_POST['message']);
+                
+           
+        }
         //*********************************** */
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {

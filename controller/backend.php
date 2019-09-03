@@ -29,37 +29,42 @@ function addPosts($title, $content)
        
     }
 }
-
 function deletePost($postId){
     $PostManager = new PostManager();
 
     $affectedLines = $PostManager->deleteArticle($postId);
-
-    
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter un article !');
     }
     else {
-        header('Location: index.php?action=deleteArticle');
-        
-       
+        header('Location: index.php?action=deleteArticle'); 
     }
 
 }
 
-function editPost($title,$content,$id){
+function editPost($title,$content,$postId){
     $PostManager = new PostManager();
 
-    $affectedLines = $PostManager->editArticle($title,$content,$id);
+    $affectedLines = $PostManager->editArticle($title,$content,$postId);
 
    
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter un article !');
     }
     else {
-        header('Location: index.php?action=editArticle');
-        
-       
+        header('Location: index.php?action=editArticle');  
     }
 
 } 
+
+
+function sendMail($names,$subject,$mail,$phone,$messages ){
+    if( mail ( "saadokone@gmail.com" ,  $subject , $message  )){
+       echo "Message reçu" ;
+    }
+    else{
+        echo "errorr";
+    }
+    
+
+}
