@@ -43,7 +43,7 @@ while ($data = $posts->fetch())
         <div class="shadow p-3 mb-5 bg-white rounded">
             <div class="row no-gutters bg-light position-relative">
                 <div class="col-md-6 mb-md-0 p-md-4">
-                    <img src="public/images/livre.jpeg" class="w-100" alt="...">
+                    <img src = "<?='public/images/'.$data['images']."" ?> " class="w-100" alt="...">
                 </div>
                 <div class="col-md-6 position-static p-4 pl-md-0">
                     <h5 class="mt-0">

@@ -19,8 +19,8 @@ try {
         //********************* */
         elseif ($_GET['action'] == 'postArticle') { //si action = fonction 'postArticle dans PostManager
             
-            if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                addPosts($_POST['title'],$_POST['content']); // appel fction de frontend
+            if (!empty($_POST['title']) && !empty($_POST['images']) && !empty($_POST['content']) ) {
+                addPosts($_POST['title'],$_POST['images'],$_POST['content']); // appel fction de frontend
                 
             }
             else {

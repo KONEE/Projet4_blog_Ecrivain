@@ -18,7 +18,10 @@
 
 <!--tinyMce -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'#content' });</script>
+  <script>tinymce.init({ selector:'#content',
+                        images_upload_url: 'postAcceptor.php',
+                        images_upload_base_path: '/some/basepath',
+                        images_upload_credentials: true });</script>
 <!--chatbot-->
 <script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(70554)</script> 
     </head>

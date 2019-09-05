@@ -12,7 +12,9 @@
         <div>
             <label for="title">Titre</label><br />
             <input type="text" id="title" name="title" />
+            <input type="file" id="images" name="images" />
         </div>
+        
         <div>
             <label for="content">Contenu</label><br />
             <textarea id="content" name="content"></textarea>

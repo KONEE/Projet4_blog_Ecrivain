@@ -13,11 +13,11 @@ function listPostsAdmin()
 }
 
 
-function addPosts($title, $content)
+function addPosts($title,$images, $content)
 {
     $PostManager = new PostManager();
 
-    $affectedLines = $PostManager->postArticle($title,$content);
+    $affectedLines = $PostManager->postArticle($title,$images,$content);
 
     //require('view/frontend/adminView.php');
     if ($affectedLines === false) {
