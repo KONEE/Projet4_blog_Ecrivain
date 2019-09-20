@@ -22,13 +22,14 @@ class PostManager
 //ajouter un article
 public function postArticle($title,$images,$content)
     {
-        $target = "../public/images/".basename($_FILES['images']['name']);
+        $target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
         //$images = $_FILES['images']['name'];
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts (title,images, content, creation_date) VALUES(?, ?,?, NOW())');
         $affectedLines = $post->execute(array($title,$images,$content));
-
+        var_dump($_FILES);
         move_uploaded_file($_FILES['images']['tmp_name'],$target);
+        
 
         return $affectedLines;
     }
@@ -41,10 +42,11 @@ public function deleteArticle($postId) {
 }
 // editer un artticle 
 public function editArticle($title,$content,$id){
-   // $bdd = $this->dbConnect();
-    //$post = $db->prepare("UPDATE post SET title = ?, content = ? WHERE id = ?'");
-    //$post = $req->execute(array($title, $content, $postId));
-    return $post;
+    $bdd = $this->dbConnect();
+    
+    $post = $bdd->prepare("UPDATE posts SET title = ?, content = ? WHERE id = ? ");
+    $affectedLines = $post->execute(array($title, $content, $id));
+    return $affectedLines;
 
 }
 

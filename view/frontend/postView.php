@@ -31,7 +31,7 @@
                         <br>
                     <textarea id="comment" name="comment" class="form-control" placeholder="write a comment..." rows="3"></textarea>
                     <br>
-                    <input type="submit" value="POST"/>
+                    <input type="submit" class="btn btn-primary " value="POST"/>
                         </form>   
                     <div class="clearfix"></div>
                     <hr>
@@ -42,7 +42,9 @@ while ($comment = $comments->fetch())
 ?>
                         <li class="media">
                             <div class="pull-right">
-                                <i class="fa fa-comments" aria-hidden="true"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+
+
                             </div>
                             <div class="media-body">
                                 <span class="text-muted pull-right">
@@ -68,32 +70,8 @@ while ($comment = $comments->fetch())
     </div>
 </div>
 
-<!----------****************************-->
- <!--       
-<form action="index.php?action=addComment&amp;id=<?//= $post['id'] ?>" method="post">
-    <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-    <div>
-        <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="Ajouter Votre commentaire"/>
-    </div>
-</form>
--->       
-<?/*php
-while ($comment = $comments->fetch())
-{
-?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-<?php
-}
-*/?>
+
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('/opt/lampp/htdocs/blog/view/template.php'); ?>

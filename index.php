@@ -39,14 +39,17 @@ try {
             }
         }
         elseif ($_GET['action'] == 'editArticle') {
-            
+            // var_dump($_POST); 
             if (isset($_GET['id']) && $_GET['id'] > 0){
-                editPost($_GET['title'],$_GET['content'],$_GET['id']);
+                if ($_SERVER['REQUEST_METHOD']==='POST'){
+                    
+                    editAdd($_POST['title'],$_POST['content'],$_GET['id']) ;
+                    
+                }
+                editPost($_GET['id']);
+                
             }
-            else {
-                listPostsAdmin();
-                //require('view/frontend/adminView.php');
-            }
+            
         }
         elseif ($_GET['action'] == 'showAbout'){
             require('view/frontend/about.php');

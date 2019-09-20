@@ -6,10 +6,11 @@ require_once('model/PostManager.php');
 
 function listPostsAdmin()
 {
+    //var_dump($_SERVER);
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
-    require('view/frontend/adminView.php');
+    require('view/backend/adminView.php');
 }
 
 
@@ -42,21 +43,25 @@ function deletePost($postId){
 
 }
 
-function editPost($title,$content,$postId){
+function editPost($postId){
     $PostManager = new PostManager();
 
-    $affectedLines = $PostManager->editArticle($title,$content,$postId);
+    $data = $PostManager->getPost($postId);
 
    
-    if ($affectedLines === false) {
+    if (!$data) {
         throw new Exception('Impossible d\'ajouter un article !');
     }
     else {
-        header('Location: index.php?action=editArticle');  
+        require('view/backend/editView.php');  
     }
 
 } 
+ function editAdd( $title,$content,$id){
+     $PostManager = new PostManager();
+     $data = $PostManager -> editArticle($title,$content,$id);
 
+ }
 
 function sendMail($names,$subject,$mail,$phone,$messages ){
     if( mail ( "saadokone@gmail.com" ,  $subject , $message  )){

@@ -43,4 +43,4 @@
 </div>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('/opt/lampp/htdocs/blog/view/template.php'); ?>
