@@ -1,5 +1,6 @@
 <?php
-class CommentManager
+require_once('model/BddManager.php');
+class CommentManager extends BddManager
 {
     public function getComments($postId)
     {
@@ -19,9 +20,9 @@ class CommentManager
         return $affectedLines;
     }
 
-    private function dbConnect()
+    /*private function dbConnect()
     {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '');
         return $db;
-    }
+    }*/
 }

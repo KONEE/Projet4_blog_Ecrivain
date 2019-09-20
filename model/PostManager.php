@@ -1,5 +1,12 @@
+
 <?php
-class PostManager
+//namespace  \opt\lampp\htdocs\blog\model ;
+require_once('model/BddManager.php');
+
+//use PDO;
+//use model\BddManager;
+
+class PostManager extends BddManager
 {
     public function getPosts()
     {
@@ -52,11 +59,12 @@ public function editArticle($title,$content,$id){
 
 //***************************************************************** */
 
-
+/*
     private function dbConnect()
     {
         $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '',[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
         return $db;
     }
+    */
 }
 
