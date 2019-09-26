@@ -17,4 +17,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('/opt/lampp/htdocs/blog/view/template.php'); ?>
+<?php require('/opt/lampp/htdocs/blog/view/templateAbout.php'); ?>
