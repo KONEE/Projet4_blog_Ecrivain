@@ -1,7 +1,7 @@
 <?php
 //**controller */
 require('controller/frontend.php');
-require('controller/backend.php');
+require('controller/Backend.php');
 require('controller/userController.php');
 
 try {
@@ -21,21 +21,28 @@ try {
         elseif ($_GET['action'] == 'postArticle') { //si action = fonction 'postArticle dans PostManager
             
             if (!empty($_POST['title']) && !empty($_POST['images']) && !empty($_POST['content']) ) {
-                addPosts($_POST['title'],$_FILES,$_POST['content']); // appel fction de frontend
+                $callAddPostBackend = new Backend();
+
+               $callAddPostBackend-> addPosts($_POST['title'],$_POST['images'],$_POST['content']); // appel fction de frontend
                 
             }
             else {
-                listPostsAdmin();
+              $callAdminView = new Backend(); 
+              $callAdminView -> listPostsAdmin();
                 //require('view/frontend/adminView.php');
                 
             }
         }
         elseif ($_GET['action'] == 'deleteArticle') { //si action = fonction 'deleteArticle' dans PostManager
             if(isset($_GET['id']) && $_GET['id'] > 0){
-                deletePost($_GET['id']); // appel fction de backend
+                $callDeletePostBackend = new Backend();
+                $callDeletePostBackend->deletePost($_GET['id']); // appel fction de backend
             }
             else {
-                listPostsAdmin();
+                $callAdminView = new Backend(); 
+              $callAdminView -> listPostsAdmin();
+                //require('view/frontend/adminView.php');
+                //listPostsAdmin();
                 //require('view/frontend/adminView.php');
             }
         }
@@ -43,11 +50,12 @@ try {
             // var_dump($_POST); 
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 if ($_SERVER['REQUEST_METHOD']==='POST'){
-                    
-                    editAdd($_POST['title'],$_POST['content'],$_GET['id']) ;
+                    $callEditAddBackend = new Backend();
+                    $callEditAddBackend->editAdd($_POST['title'],$_POST['content'],$_GET['id']) ;
                     
                 }
-                editPost($_GET['id']);
+                $callEditPostBackend = new Backend();
+                $callEditPostBackend->editPost($_GET['id']);
                 
             }
             

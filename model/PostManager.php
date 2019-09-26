@@ -32,13 +32,13 @@ class PostManager extends BddManager
 //ajouter un article
 public function postArticle($title,$images,$content)
     {
-        //$target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
+        $target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
         //$images = $_FILES['images']['name'];
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts (title,images, content, creation_date) VALUES(?, ?,?, NOW())');
         $affectedLines = $post->execute(array($title,$images,$content));
-       // var_dump($_FILES);
-       // move_uploaded_file($_FILES['images']['tmp_name'],$target);
+        var_dump($_FILES);
+        move_uploaded_file($_FILES['images']['tmp_name'],$target);
         
 
         return $affectedLines;
@@ -48,7 +48,7 @@ public function deleteArticle($postId) {
     $bdd = $this->dbConnect();
     $post = $bdd->prepare("DELETE FROM posts WHERE id=".$_GET['id']);
     $affectedLines = $post->execute(array($postId));
-   // return $affectedLines;
+   
 }
 // editer un artticle 
 public function editArticle($title,$content,$id){
@@ -60,14 +60,7 @@ public function editArticle($title,$content,$id){
 
 }
 
-//***************************************************************** */
 
-/*
-    private function dbConnect()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '',[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
-        return $db;
-    }
-    */
+
 }
 

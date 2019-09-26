@@ -9,22 +9,58 @@
 	<input type="file" name="file"/><br/><br/>
 	<input type="submit" name="submit" value="upload"/>
         </form>	-->
+<!-- Default form login -->
+<div container>
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+                <form class="text-center border border-light p-5" action="index.php?action=postArticle" method="post" >
+                    <div>
+                        
+                        <input type="text" id="title" name="title" placeholder="Titre"/>
+                        <input type="file" id="images" name="images"  />
+                    </div>
+                    <br>
+                    
+                    <div>
+                        
+                        <textarea id="content" name="content" placeholder="Article"></textarea>
+                    </div>
+                    <div>
+                          <!--  <input type="submit" value="Ajouter"/> -->
+                        <input type="submit" class="btn btn-secondary btn-lg btn-block" value="Envoyer"/>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form class="text-center border border-light p-5" action="index.php?action=connexion" method="post">
 
-<form action="index.php?action=postArticle" method="post" enctype="multipart/form-data">
-        <div>
-            <label for="title">Titre</label><br />
-            <input type="text" id="title" name="title" />
-            <input type="file" id="images" name="images"  />
+                    <p class="h4 mb-4">Nouveau Administrateur</p>
+                    <!-- pseudo -->
+                    <input type="text" name="pseudo" required id="defaultLoginFormPseudo" class="form-control mb-4" placeholder="Pseudo">
+                    <!-- Email -->
+                    <input type="email" name="email" required id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+                    <!-- Password -->
+                    <input type="password" name="pass" required id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+               
+                    
+
+                    <!-- Sign in button -->
+                    <button class="btn btn-outline-secondary" type="submit">Ajouter</button>
+
+                    
+
+                </form>
+            </div>
+            
+            
+            
         </div>
-        
-        <div>
-            <label for="content">Contenu</label><br />
-            <textarea id="content" name="content"></textarea>
-        </div>
-        <div>
-            <input type="submit" value="Ajouter"/>
-        </div>
-    </form>
+</div>
+<!-- Default form login -->
+
+
+
     <h2>Liste des articles</h2>
     <?php
     while ($data = $posts->fetch())
