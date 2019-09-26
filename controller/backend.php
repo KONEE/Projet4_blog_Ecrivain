@@ -16,9 +16,17 @@ function listPostsAdmin()
 
 function addPosts($title,$images, $content)
 {
+    //var_dump($images);
+    if(isset($images['file'])){
+		$name_file = "images".$images['file']['name'];
+		$tmp_name = $images['file']['tmp_name'];
+		$local_image = "public/images";
+		
+		move_uploaded_file($tmp_name,"$local_image/$name_file");
+	}
     $PostManager = new PostManager();
 
-    $affectedLines = $PostManager->postArticle($title,$images,$content);
+    $affectedLines = $PostManager->postArticle($title,"$local_image/$name_file",$content);
 
     //require('view/frontend/adminView.php');
     if ($affectedLines === false) {
@@ -50,7 +58,7 @@ function editPost($postId){
 
    
     if (!$data) {
-        throw new Exception('Impossible d\'ajouter un article !');
+        throw new Exception('Impossible d\'editer un article !');
     }
     else {
         require('view/backend/editView.php');  

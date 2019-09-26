@@ -1,5 +1,9 @@
 <?php
+
+//namespace model;
+
 require_once('model/BddManager.php');
+
 class CommentManager extends BddManager
 {
     public function getComments($postId)

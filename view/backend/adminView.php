@@ -1,24 +1,20 @@
 
-
-
-  
-
-            
-    
-
 <?php $title = 'admin'; ?>
 
 <?php ob_start(); ?>
 
 <p><a href="index.php">Retour à la liste des billets </a></p>
 
+<!--<form action="index.php?action=postArticle" method="post" enctype="multipart/form-data">
+	<input type="file" name="file"/><br/><br/>
+	<input type="submit" name="submit" value="upload"/>
+        </form>	-->
 
-
-<form action="index.php?action=postArticle" method="post">
+<form action="index.php?action=postArticle" method="post" enctype="multipart/form-data">
         <div>
             <label for="title">Titre</label><br />
             <input type="text" id="title" name="title" />
-            <input type="file" id="images" name="images" />
+            <input type="file" id="images" name="images"  />
         </div>
         
         <div>

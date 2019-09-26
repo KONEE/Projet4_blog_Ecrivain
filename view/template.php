@@ -64,7 +64,7 @@
                     <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Jean Forteroche</h1>
-                        <!--<span class="subheading">A Blog Theme by Start Bootstrap</span>-->
+                        <span class="subheading">Ecrivain et <a class="navbar-brand" href="index.php?action=connexion">Administarteur du site</a></span>
                     </div>
                     </div>
                 </div>

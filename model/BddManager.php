@@ -1,6 +1,6 @@
 <?php
 //namespace \opt\lampp\htdocs\blog\model ;
-    
+   // namespace model
 
 class  BddManager {
     protected function dbConnect(){

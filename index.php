@@ -2,6 +2,7 @@
 //**controller */
 require('controller/frontend.php');
 require('controller/backend.php');
+require('controller/userController.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -20,7 +21,7 @@ try {
         elseif ($_GET['action'] == 'postArticle') { //si action = fonction 'postArticle dans PostManager
             
             if (!empty($_POST['title']) && !empty($_POST['images']) && !empty($_POST['content']) ) {
-                addPosts($_POST['title'],$_POST['images'],$_POST['content']); // appel fction de frontend
+                addPosts($_POST['title'],$_FILES,$_POST['content']); // appel fction de frontend
                 
             }
             else {
@@ -78,7 +79,36 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        
+        elseif ($_GET['action']=='connexion') {
+            if ($_SERVER['REQUEST_METHOD'] == "POST"){
+
+                connexion();
+                header('Location: index.php?action=postArticle');
+                //createA(); BON !
+            }
+             else{ 
+            require('view/backend/connexionView.php');
+            //createA();
+            }
+            
+
+            
+           // session_start();
+          /* if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+            {
+                if ($_SERVER['REQUEST_METHOD'] == "POST"){
+
+                    connexion();
+                    header('Location: index.php?action=postArticle');
+                    //createA(); BON !
+                }
+                 else{ 
+                require('view/backend/connexionView.php');
+                //createA();
+                }
+                echo 'Bonjour ' . $_SESSION['pseudo'];
+            }*/
+        }
     }
     else {
         listPosts();

@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<em><a href="index.php?action=postArticle">AJOUTER UN ARTICLE</a></em>
+<!--<em><a href="index.php?action=postArticle">AJOUTER UN ARTICLE</a></em>-->
 <p>Derniers billets du blog :</p>
 
 <div class='container'>
