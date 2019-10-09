@@ -1,4 +1,9 @@
 <?php
+namespace model;
+
+use model\BddManager;
+use PDO;
+
 class  UserManager extends BddManager
 {
     

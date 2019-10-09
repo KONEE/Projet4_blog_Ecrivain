@@ -1,9 +1,28 @@
 <?php
+namespace Controller;
 
-// Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/BddManager.php');
+use model\PostManager;
+use model\BddManager;
+use PDO;
+
+
 class Backend {
+    private $isConnect = false;
+
+    public function __construct( ){
+
+        if(isset($_SESSION['id'])){
+            $this->isConnect = true;
+        }
+
+    }
+    public function getIsConnect(){
+        return $this->isConnect;
+    }
+    public function setIsConnect($isConnexion){
+        $this->isConnect = $isConnexion;
+    }
+
     function listPostsAdmin()
     {
         //var_dump($_SERVER);
@@ -18,8 +37,8 @@ class Backend {
     {
         $PostManager = new PostManager();
 
-        $affectedLines = $PostManager->postArticle($title,$images,$content);
 
+        $affectedLines = $PostManager->postArticle($title,$images,$content);
         
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter un article !');
@@ -30,6 +49,9 @@ class Backend {
         
         }
     }
+
+   
+
     function deletePost($postId){
         $PostManager = new PostManager();
 

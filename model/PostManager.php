@@ -1,13 +1,9 @@
-
 <?php
+namespace model;
 
-/*namespace model;
- erreur lié : L’instruction de déclaration d’espace de nom doit être la toute première instruction ou après tout appel de déclaration dans le script de
-*/
-require_once('model/BddManager.php');
+use model\BddManager;
+use PDO;
 
-//use PDO;
-//use model\BddManager;
 
 class PostManager extends BddManager
 {
@@ -32,13 +28,13 @@ class PostManager extends BddManager
 //ajouter un article
 public function postArticle($title,$images,$content)
     {
-        $target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
+       // $target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
         //$images = $_FILES['images']['name'];
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts (title,images, content, creation_date) VALUES(?, ?,?, NOW())');
         $affectedLines = $post->execute(array($title,$images,$content));
-        var_dump($_FILES);
-        move_uploaded_file($_FILES['images']['tmp_name'],$target);
+      //  var_dump($_FILES);
+       // move_uploaded_file($_FILES['images']['tmp_name'],$target);
         
 
         return $affectedLines;

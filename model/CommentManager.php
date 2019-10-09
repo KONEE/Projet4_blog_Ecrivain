@@ -1,8 +1,9 @@
 <?php
+namespace model;
 
-//namespace model;
+use model\BddManager;
+use PDO;
 
-require_once('model/BddManager.php');
 
 class CommentManager extends BddManager
 {

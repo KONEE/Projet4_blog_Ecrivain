@@ -1,7 +1,8 @@
 
-<?php $title = 'admin'; ?>
+<?php $title = SITE_NAME .'admin_editer'; ?>
 
 <?php ob_start(); ?>
+
 
 <p><a href="index.php?action=postArticle">Retour à la liste des billets Admin</a></p>
 <div container>

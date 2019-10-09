@@ -1,12 +1,20 @@
 <?php
-//namespace \opt\lampp\htdocs\blog\model ;
-   // namespace model
+namespace model ;
+
+//use configuration;
+require_once 'config.php';
 
 class  BddManager {
     protected function dbConnect(){
        
-            $db = new \PDO('mysql:host=localhost;dbname=test;charset=utf8', 'dbuser', '');
-        return $db;
-       
+       	try {
+            $db = new \PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+            $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
+            return $db;
+        } catch (PDOException $e) {
+            echo 'Ã‰chec lors de la connexion : ' . $e->getCode() . $e->getMessage();
+
+        }
+            
     }
 }

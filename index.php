@@ -1,61 +1,76 @@
 <?php
-//**controller */
-require('controller/frontend.php');
-require('controller/Backend.php');
-require('controller/userController.php');
+session_start();
 
+use controller\Frontend;
+use controller\Backend;
+use controller\UserController;
+
+require ('Autoloader.php');
+Autoloader::register();
+
+    $callFrontend = new Frontend();
+    $callBackend = new Backend();
+    $callUserController = new UserController();
+/*if($callBackend->getIsconnect()){
+    //les action backend
+}
+else{
+    //formulaire de connexion
+}
+if($_GET['action']){
+
+}*/
+//var_dump($_SESSION);
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+           $callFrontend-> listPosts();
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                $callFrontend->post();
             }
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
         //********************* */
-        elseif ($_GET['action'] == 'postArticle') { //si action = fonction 'postArticle dans PostManager
+        elseif ($_GET['action'] == 'postArticle'/*&& isset($_SESSION['id'])*/) { //si action = fonction 'postArticle dans PostManager
             
             if (!empty($_POST['title']) && !empty($_POST['images']) && !empty($_POST['content']) ) {
-                $callAddPostBackend = new Backend();
+             
 
-               $callAddPostBackend-> addPosts($_POST['title'],$_POST['images'],$_POST['content']); // appel fction de frontend
+               $callBackend-> addPosts($_POST['title'],$_POST['images'],$_POST['content']); // appel fction de frontend
                 
             }
             else {
-              $callAdminView = new Backend(); 
-              $callAdminView -> listPostsAdmin();
-                //require('view/frontend/adminView.php');
+               
+              $callBackend -> listPostsAdmin();
+               
                 
             }
         }
-        elseif ($_GET['action'] == 'deleteArticle') { //si action = fonction 'deleteArticle' dans PostManager
+        elseif ($_GET['action'] == 'deleteArticle' /* && isset($_SESSION['id'])*/) { //si action = fonction 'deleteArticle' dans PostManager
             if(isset($_GET['id']) && $_GET['id'] > 0){
-                $callDeletePostBackend = new Backend();
-                $callDeletePostBackend->deletePost($_GET['id']); // appel fction de backend
+                
+               $callBackend->deletePost($_GET['id']); // appel fction de backend
             }
             else {
-                $callAdminView = new Backend(); 
-              $callAdminView -> listPostsAdmin();
-                //require('view/frontend/adminView.php');
-                //listPostsAdmin();
-                //require('view/frontend/adminView.php');
+               
+              $callBackend -> listPostsAdmin();
+                
             }
         }
-        elseif ($_GET['action'] == 'editArticle') {
+        elseif ($_GET['action'] == 'editArticle'/* && isset($_SESSION['id'])*/) {
             // var_dump($_POST); 
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 if ($_SERVER['REQUEST_METHOD']==='POST'){
-                    $callEditAddBackend = new Backend();
-                    $callEditAddBackend->editAdd($_POST['title'],$_POST['content'],$_GET['id']) ;
+                   
+                    $callBackend->editAdd($_POST['title'],$_POST['content'],$_GET['id']) ;
                     
                 }
-                $callEditPostBackend = new Backend();
-                $callEditPostBackend->editPost($_GET['id']);
+                
+                $callBackend->editPost($_GET['id']);
                 
             }
             
@@ -67,17 +82,13 @@ try {
             require('view/frontend/contact.php');
         }
         elseif ($_GET['action'] == 'sendMessages') { 
-            
-            
-           sendMail($_POST["name"],$_POST['email'],$_POST['message']);
-                
-           
+           $callUserController->sendMail($_POST["name"],$_POST['email'],$_POST['message']);  
         }
         //*********************************** */
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                   $callFrontend -> addComment($_GET['id'], $_POST['author'], $_POST['comment']);
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
@@ -88,38 +99,31 @@ try {
             }
         }
         elseif ($_GET['action']=='connexion') {
+            
             if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-                connexion();
+                $callUserController->connexion();
+
                 header('Location: index.php?action=postArticle');
                 //createA(); BON !
             }
              else{ 
+               
             require('view/backend/connexionView.php');
             //createA();
             }
-            
+        }
+        elseif($_GET['action']== 'deconnexion'){
+            session_destroy();
+            require('view/backend/connexionView.php');
 
-            
-           // session_start();
-          /* if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
-            {
-                if ($_SERVER['REQUEST_METHOD'] == "POST"){
-
-                    connexion();
-                    header('Location: index.php?action=postArticle');
-                    //createA(); BON !
-                }
-                 else{ 
-                require('view/backend/connexionView.php');
-                //createA();
-                }
-                echo 'Bonjour ' . $_SESSION['pseudo'];
-            }*/
+        }
+        else{
+            header('Location: index.php?action=connexion');
         }
     }
     else {
-        listPosts();
+        $callFrontend->listPosts();
     }
 }
 catch(Exception $e) {
