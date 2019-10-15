@@ -7,6 +7,7 @@ use PDO;
 
 
 class Backend {
+    
     private $isConnect = false;
 
     public function __construct( ){
@@ -44,6 +45,7 @@ class Backend {
             throw new Exception('Impossible d\'ajouter un article !');
         }
         else {
+            
             header('Location: index.php?action=postArticle');
             
         

@@ -7,11 +7,11 @@ use PDO;
 class  UserManager extends BddManager
 {
     
-    public function userConnexion(){
+    public function userConnexion($pseudo){
         $db = $this->dbConnect();
         //  Récupération de l'utilisateur et de son pass hashé
         $req = $db->prepare('SELECT id, pseudo,pass FROM membresAdmin WHERE pseudo = :pseudo');
-        $req->execute(array('pseudo' => $_POST['pseudo']));
+        $req->execute(array('pseudo' => $pseudo));
         $resultat = $req->fetch();
         return $resultat;
     }

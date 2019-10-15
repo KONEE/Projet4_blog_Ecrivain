@@ -3,6 +3,7 @@ namespace controller;
 
 use model\PostManager;
 use model\BddManager;
+use model\CommentManager;
 use PDO;
 
 

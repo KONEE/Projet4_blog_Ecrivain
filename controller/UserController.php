@@ -4,24 +4,25 @@ namespace controller;
 use model\BddManager;
 use model\UserManager;
 
+
     
     class UserController{
-          public  function connexion(){
+          public  function connexion($pseudo,$pass){
                
                 $connexionManager = new UserManager();
-                $user = $connexionManager->userConnexion();
+                $user = $connexionManager->userConnexion($pseudo);
                // var_dump($user);
                 if(!$user){
-                    throw new Exception( 'Mauvais identifiant ou mot de passe !');
+                    throw new \Exception( 'Mauvais identifiant ou mot de passe !');
 
                 }
                 else{
-                    $isPasswordCorrect = password_verify($_POST['pass'], $user['pass']);
+                    $isPasswordCorrect = password_verify($pass, $user['pass']);
                         if ($isPasswordCorrect) {
                             
-                           // $_SESSION['id'] = $user['id'];
+                            $_SESSION['id'] = $user['id'];
                             //$_SESSION['pseudo'] = $user['pseudo'];
-                            echo 'Vous êtes connecté !';
+                           // echo 'Vous êtes connecté !';
                             
                             
                         }
