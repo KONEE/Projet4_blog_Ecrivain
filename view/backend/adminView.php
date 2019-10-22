@@ -2,8 +2,7 @@
 <?php $title = SITE_NAME .'admin'; ?>
 
 <?php ob_start(); 
-//var_dump($_SESSION);
-//echo 'bonjour'.$_SESSION['pseudo'];
+
 ?>
 <p><?='Vous etes connecté entanque Administrateur'?>  <a href='index.php?action=deconnexion'>deconnecter</a></p>
 

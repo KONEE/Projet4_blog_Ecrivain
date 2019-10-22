@@ -1,7 +1,7 @@
 <?php
 namespace model ;
 
-//use configuration;
+
 require_once 'config.php';
 
 class  BddManager {

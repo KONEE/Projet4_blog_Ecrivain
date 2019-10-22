@@ -1,5 +1,5 @@
 
-<?php $title = /*SITE_NAME .*/'connexion'; ?>
+<?php $title = 'connexion'; ?>
 
 <?php ob_start(); ?>
 
@@ -7,7 +7,7 @@
 <div class=container>
         <div class="row justify-content-center">
             <!-- Material form login -->
-<!-- Material form login -->
+
             <div class="card">
 
                 <h5 class="card-header info-color white-text text-center py-4">
@@ -49,11 +49,6 @@
 
                     <!-- Sign in button -->
                     <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
-
-                    <!-- Register 
-                    <p>Not a member?
-                        <a href="">Register</a>
-                    </p> -->
 
                     <!-- Social login -->
                     <p>or sign in with:</p>

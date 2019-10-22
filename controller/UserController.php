@@ -32,7 +32,7 @@ use model\UserManager;
                 }
                
             }
-            function createA(){
+            public function createA(){
                 $connexionManager = new UserManager();
                 $admin = $connexionManager -> createUser();
                 if($admin===false){

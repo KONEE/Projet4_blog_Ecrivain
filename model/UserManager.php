@@ -18,8 +18,7 @@ class  UserManager extends BddManager
 
     public function createUser(){
         $db = $this->dbConnect();
-        // Vérification de la validité des informations
-       // var_dump($_POST);
+       
         // Hachage du mot de passe
         $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         
@@ -27,7 +26,7 @@ class  UserManager extends BddManager
         // Insertion
         $req = $db->prepare('INSERT INTO membresAdmin(pseudo, pass, email, date_inscription) VALUES(?, ?, ?, CURDATE())');
         $resultat = $req->execute(array($_POST['pseudo'], $pass_hache, $_POST['email']));
-       // $resultat->closeCursor();
+       
     }
     
    

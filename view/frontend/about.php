@@ -1,4 +1,4 @@
-<?php $title =/* SITE_NAME .*/'APROPOS'; ?>
+<?php $title ='APROPOS'; ?>
 
 <?php ob_start(); ?>
 

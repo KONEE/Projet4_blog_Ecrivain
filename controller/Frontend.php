@@ -9,7 +9,7 @@ use PDO;
 
 class Frontend {
 
-            function listPosts()
+    public function listPosts()
             {
                // var_dump(new PostManager());
                 $postManager = new PostManager(); // Création d'un objet
@@ -18,7 +18,7 @@ class Frontend {
                 require('view/frontend/listPostsView.php');
             }
 
-            function post()
+            public  function post()
             {
                 $postManager = new PostManager();
                 $commentManager = new CommentManager();
@@ -29,7 +29,7 @@ class Frontend {
                 require('view/frontend/postView.php');
             }
 
-            function addComment($postId, $author, $comment)
+            public function addComment($postId, $author, $comment)
             {
                 $commentManager = new CommentManager();
 
@@ -42,8 +42,20 @@ class Frontend {
                     header('Location: index.php?action=post&id=' . $postId);
                 }
             }
-
-            function showAbout(){ }
-            function showContact(){}
+            public function sendMail($name,$mail,$message ){
+                if( mail ( "saadokone@gmail.com" , $name , $message  )){
+                    header('Location: index.php?action=showContact&succes=Message envoyer avec succes!!!');
+                //echo "Message reçu" ;
+                }
+                else{
+                    //echo "errorr";
+                    header('Location: index.php?action=showContact&error=ERREUR');
+                    
+                }
+                
+        
+            }
+            public function showAbout(){ }
+            public function showContact(){}
 
 }

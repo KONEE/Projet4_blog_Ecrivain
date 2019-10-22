@@ -24,7 +24,7 @@ class Backend {
         $this->isConnect = $isConnexion;
     }
 
-    function listPostsAdmin()
+    public function listPostsAdmin()
     {
         //var_dump($_SERVER);
         $postManager = new PostManager(); // Création d'un objet
@@ -34,7 +34,7 @@ class Backend {
     }
 
 
-    function addPosts($title,$images, $content)
+    public function addPosts($title,$images, $content)
     {
         $PostManager = new PostManager();
 
@@ -54,7 +54,7 @@ class Backend {
 
    
 
-    function deletePost($postId){
+    public function deletePost($postId){
         $PostManager = new PostManager();
 
         $affectedLines = $PostManager->deleteArticle($postId);
@@ -67,7 +67,7 @@ class Backend {
 
     }
 
-    function editPost($postId){
+    public function editPost($postId){
         $PostManager = new PostManager();
 
         $data = $PostManager->getPost($postId);
@@ -81,20 +81,11 @@ class Backend {
         }
 
     } 
-    function editAdd( $title,$content,$id){
+    public function editAdd( $title,$content,$id){
         $PostManager = new PostManager();
         $data = $PostManager -> editArticle($title,$content,$id);
 
     }
 
-    function sendMail($names,$subject,$mail,$phone,$messages ){
-        if( mail ( "saadokone@gmail.com" ,  $subject , $message  )){
-        echo "Message reçu" ;
-        }
-        else{
-            echo "errorr";
-        }
-        
-
-    }
+    
 }

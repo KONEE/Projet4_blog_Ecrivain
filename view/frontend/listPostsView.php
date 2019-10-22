@@ -11,35 +11,6 @@ while ($data = $posts->fetch())
 {
 ?>
     
-   <!-- <button type="button" class="btn btn-light" href="index.php?action=post&amp;id=<?//= //$data['id'] ?>">
-    
-            <table class="table table-bordered table-striped table-sm"> 
-                <thead>
-                    <tr>
-                            <th>
-                                
-                                    <?//= //htmlspecialchars($data['title']) ?>
-                                    <em>le <?//=// $data['creation_date_fr'] ?></em>
-                                
-                            </th> 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>   
-                        <td>
-                            
-                                <img src="public/images/livre.jpeg" class="rounded float-left" alt="...">
-                                <?//= //$data['content'] ?>
-                                <br />
-                                <em><a href="index.php?action=post&amp;id=<?//= //$data['id'] ?>">Commentaires</a></em>
-                        
-                        </td>    
-                    </tr>
-            
-                </tbody>   
-                
-            </table> 
-        </button>  -->
         <div class="shadow p-3 mb-5 bg-white rounded">
             <div class="row no-gutters bg-light position-relative">
                 <div class="col-md-6 mb-md-0 p-md-4">

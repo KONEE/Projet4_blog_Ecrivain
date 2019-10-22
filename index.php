@@ -40,7 +40,7 @@ if (isset($_GET['action'])){
         require('view/frontend/contact.php');
     }
     elseif ($_GET['action'] == 'sendMessages') { 
-       $callUserController->sendMail($_POST["name"],$_POST['email'],$_POST['message']);  
+       $callFrontend->sendMail($_POST["name"],$_POST['email'],$_POST['message']);  
     }
     
     elseif ($_GET['action'] == 'addComment') {

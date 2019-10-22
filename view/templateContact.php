@@ -70,6 +70,19 @@
                 </div>
                 </div>
             </header>
+            <?php if(isset($_GET['succes'])):?> 
+                    <div class='container'>
+                        <div class="alert alert-success" role="alert">
+                       <?=$_GET['succes'];?>
+                       </div>
+                    </div> 
+            <?php elseif(isset($_GET['error'])):?> 
+                    <div class='container'>
+                        <div class="alert alert-danger" role="alert">
+                       <?=$_GET['error'];?>
+                       </div>
+                    </div> 
+                <?php endif ;?>
                     <?= $content ?>
                     <!-- Footer -->
                     <hr>
