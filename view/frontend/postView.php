@@ -9,7 +9,7 @@
         <?= htmlspecialchars($post['title']) ?>
         <em>le <?= $post['creation_date_fr'] ?></em>
     </h3>
-    
+
     <p>
         <?= nl2br(htmlspecialchars($post['content'])) ?>
     </p>
@@ -26,23 +26,25 @@
 
                 </div>
                 <div class="panel-body">
-                        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-                        <input class="form-control" type="text" id="author" name="author" placeholder="Auteur" rows="3"/>
+                    <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                        <input class="form-control" type="text" id="author" name="author" placeholder="Auteur"
+                            rows="3" />
                         <br>
-                    <textarea id="comment" name="comment" class="form-control" placeholder="write a comment..." rows="3"></textarea>
-                    <br>
-                    <input type="submit" class="btn btn-primary " value="POST"/>
-                        </form>   
+                        <textarea id="comment" name="comment" class="form-control" placeholder="write a comment..."
+                            rows="3"></textarea>
+                        <br>
+                        <input type="submit" class="btn btn-primary " value="POST" />
+                    </form>
                     <div class="clearfix"></div>
                     <hr>
                     <ul class="media-list">
-                    <?php
+                        <?php
 while ($comment = $comments->fetch())
 {
 ?>
                         <li class="media">
                             <div class="pull-right">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
 
 
                             </div>
@@ -51,17 +53,17 @@ while ($comment = $comments->fetch())
                                     <small class="text-muted"><?= $comment['comment_date_fr'] ?></small>
                                 </span>
                                 <strong class="text-success">@<?= htmlspecialchars($comment['author']) ?>
-                                
- 
+
+
                                 </strong>
                                 <p>
-                                <?= nl2br(htmlspecialchars($comment['comment'])) ?>.
+                                    <?= nl2br(htmlspecialchars($comment['comment'])) ?>.
                                 </p>
                             </div>
                         </li>
                         <?php
 }
-?> 
+?>
                     </ul>
                 </div>
             </div>
