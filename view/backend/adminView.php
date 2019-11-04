@@ -3,18 +3,18 @@
 <?php ob_start(); 
 
 ?>
-<p><?='Vous etes connecté entanque Administrateur'?> <a href='index.php?action=deconnexion'>deconnecter</a></p>
+<div class="container">
+    <div class="d-flex justify-content-between">
+    <div class="d-inline-flex p-2">
+        <a href="index.php">Retour à la liste des billets </a>
+        </div>
+        <div class="d-inline-flex p-2">
+             <a href='index.php?action=deconnexion'>Deconnecter</a>
+        </div>  
+    </div>
+</div>
 
-
-
-<p><a href="index.php">Retour à la liste des billets </a></p>
-
-<!--<form action="index.php?action=postArticle" method="post" enctype="multipart/form-data">
-	<input type="file" name="file"/><br/><br/>
-	<input type="submit" name="submit" value="upload"/>
-        </form>	-->
-<!-- Default form login -->
-<div container>
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
             <form class="text-center border border-light p-5" action="index.php?action=postArticle" method="post">
@@ -59,8 +59,11 @@
 <!-- Default form login -->
 
 
-
-<h2>Liste des articles</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <h2>Liste des articles</h2>
+    </div>
+</div>
 <?php
     while ($data = $posts->fetch())
     {
@@ -80,7 +83,7 @@
         <tbody>
             <tr>
                 <td><?= htmlspecialchars($data['title']) ?></td>
-                <td><?= nl2br(($data['content'])) ?></td>
+                <td><?= nl2br(substr(substr(htmlspecialchars($data['content']),0,100),0,strrpos(substr(htmlspecialchars($data['content']),0,100),' ')).'...') ?></td>
                 <td><?= $data['creation_date_fr']?></td>
                 <td><em><a href="index.php?action=deleteArticle&amp;id=<?= $data['id']?>"><i
                                 class="fas fa-trash-alt"></i></a></em>

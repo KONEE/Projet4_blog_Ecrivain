@@ -1,5 +1,6 @@
 <?php
 namespace Controller;
+use controller\Useful;
 use model\PostManager;
 use model\BddManager;
 use PDO;

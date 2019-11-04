@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title ?></title>
     <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="/opt/lampp/htdocs/blog/public/images/favicon.ico"/>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,6 +21,7 @@
 
     <!-- Custom styles for this template -->
     <link href="public/css/clean-blog.min.css" rel="stylesheet">
+    
 
     <!--tinyMce -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
@@ -79,7 +81,14 @@
             </div>
         </div>
     </header>
-
+    <?php if(isset($_GET['connect'])):?>
+    <div class='container'>
+        <div class="alert alert-success" role="alert">
+        <?php //var_dump($_SESSION['state']);?>
+            <?=$_SESSION['state'];?>
+        </div>
+    </div>
+    <?php endif ;?>
     <?= $content ?>
 
     <!-- Footer -->

@@ -17,13 +17,10 @@ class PostManager extends BddManager {
     }
     //ajouter un article
     public function postArticle($title, $images, $content) {
-        // $target = $_SERVER['DOCUMENT_ROOT']."/public/images/";
-        //$images = $_FILES['images']['name'];
         $db = $this->dbConnect();
         $post = $db->prepare('INSERT INTO posts (title,images, content, creation_date) VALUES(?, ?,?, NOW())');
         $affectedLines = $post->execute(array($title, $images, $content));
-        //  var_dump($_FILES);
-        // move_uploaded_file($_FILES['images']['tmp_name'],$target);
+        
         return $affectedLines;
     }
     // Supprimer un article

@@ -3,11 +3,13 @@ session_start();
 use controller\Frontend;
 use controller\Backend;
 use controller\UserController;
+
 require ('Autoloader.php');
 Autoloader::register();
 $callFrontend = new Frontend();
 $callBackend = new Backend();
 $callUserController = new UserController();
+
     /************************les action Frontend**************************/
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listPosts') {
@@ -38,7 +40,7 @@ if (isset($_GET['action'])) {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $callUserController->connexion($_POST['pseudo'], $_POST['pass']);
             $callBackend->setIsConnect(TRUE);
-            header('Location: index.php?action=postArticle');
+            header('Location: index.php?action=postArticle&'.$_SESSION['state']);
             //createA(); BON !
             
         } else {
@@ -53,10 +55,11 @@ if (isset($_GET['action'])) {
     } elseif ($callBackend->getIsconnect()) {
         /************************les action backend**************************/
         if ($_GET['action'] == 'postArticle') { 
-            if (!empty($_POST['title']) && !empty($_POST['images']) && !empty($_POST['content'])) {
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
                 $callBackend->addPosts($_POST['title'], $_POST['images'], $_POST['content']); 
                 
             } else {
+                
                 $callBackend->listPostsAdmin();
             }
         } elseif ($_GET['action'] == 'deleteArticle') { 

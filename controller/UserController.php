@@ -13,8 +13,7 @@ class UserController {
             $isPasswordCorrect = password_verify($pass, $user['pass']);
             if ($isPasswordCorrect) {
                 $_SESSION['id'] = $user['id'];
-                //$_SESSION['pseudo'] = $user['pseudo'];
-                // echo 'Vous êtes connecté !';
+                $_SESSION['state'] = 'Vous êtes connecté en tant que Administrateur';
                 
             } else {
                 echo 'Mauvais identifiant ou mot de passeeee !';
