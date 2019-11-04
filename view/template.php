@@ -81,10 +81,9 @@
             </div>
         </div>
     </header>
-    <?php if(isset($_GET['connect'])):?>
+    <?php if(isset($_SESSION['state'])):?>
     <div class='container'>
         <div class="alert alert-success" role="alert">
-        <?php //var_dump($_SESSION['state']);?>
             <?=$_SESSION['state'];?>
         </div>
     </div>

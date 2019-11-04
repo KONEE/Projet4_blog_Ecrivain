@@ -36,7 +36,7 @@ class Backend {
         $PostManager = new PostManager();
         $affectedLines = $PostManager->deleteArticle($postId);
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter un article !');
+            throw new Exception('Impossible de supprimer un article !');
         } else {
             header('Location: index.php?action=deleteArticle');
         }

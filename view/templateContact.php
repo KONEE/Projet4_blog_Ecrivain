@@ -58,9 +58,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=showAbout">About</a>
                     </li>
-                    <!--  <li class="nav-item">
-                        <a class="nav-link" href="post.html">Post</a>
-                    </li> -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=showContact">Contact</a>
                     </li>
