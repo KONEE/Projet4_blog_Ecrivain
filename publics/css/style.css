@@ -9,15 +9,16 @@ h3
     font-size:0.9em;
     margin-bottom:0px;
 }
-.news p
+/*.news p
 {
     background-color:#CCCCCC;
     margin-top:0px;
-}
+}*/
 .news
 {
     width:70%;
     margin:auto;
+    background-color:#CCCCCC;
 }
 
 a

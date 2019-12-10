@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html  lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title ?></title>
-    <link href="public/css/style.css" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/x-icon" href="/opt/lampp/htdocs/blog/public/images/favicon.ico"/>
+    <link href="publics/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="publics/images/favicon.ico"/>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
 
+    
     <!-- Custom fonts for this template -->
-    <link href="public/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="publics/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
         type='text/css'>
     <link
@@ -20,27 +22,29 @@
         rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="public/css/clean-blog.min.css" rel="stylesheet">
+    <link href="publics/css/clean-blog.min.css" rel="stylesheet">
     
-
     <!--tinyMce -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <script>
         tinymce.init({
             selector: '#content',
-            images_upload_url: 'postAcceptor.php',
-            images_upload_base_path: '/some/basepath',
-            images_upload_credentials: true
+            entity_encoding : "raw",
+	        encoding: "UTF-8",
+            language : 'fr_FR',
+           
         });
     </script>
-    <!--chatbot-->
+    
+    <!--chatbot
     <script src="https://account.snatchbot.me/script.js"></script>
     <script>
         window.sntchChat.Init(70554)
-    </script>
+    </script> -->
 </head>
 
 <body>
+   
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
@@ -54,41 +58,87 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index.php">ARTICLES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=showAbout">About</a>
+                        <a class="nav-link" href="index.php?action=showAbout">A PROPOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=showContact">Contact</a>
+                        <a class="nav-link" href="index.php?action=showContact">CONTACT</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('public/images/home-bg.jpg')">
+    <header class="masthead" style="background-image: url('publics/images/home-bg.jpg')">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Jean Forteroche</h1>
-                        <span class="subheading">Ecrivain et <a class="navbar-brand"
-                                href="index.php?action=connexion">Administarteur du site</a></span>
+                        <span class="subheading">Ecrivain et 
+                         <a class="navbar-brand" 
+                                href="index.php?action=connexion">Administrateur du site</a></span>    
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <?php if(isset($_SESSION['state'])):?>
+    
+    <?php if(isset($_SESSION['message_succes'])):?>
+    <div class='container'>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="alert alert-success" role="alert">
+                <div class="justify-content-beetwen">
+                        <button type="button" class="close" 
+                                        data-dismiss="alert" 
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                                        
+                    <?=$_SESSION['message_succes'];
+                    unset($_SESSION['message_succes']);?>
+                </div> 
+            </div>
+        </div> 
+    </div>       
+    </div>
+    <?php elseif(isset($_SESSION['state'])):?>
     <div class='container'>
         <div class="alert alert-success" role="alert">
+            <span class="d-flex justify-content-between">
             <?=$_SESSION['state'];?>
+                 <a class="text-secondary"  href='index.php?action=deconnexion'>Deconnecter</a>   
+            </span>
         </div>
     </div>
+    <?php elseif(isset($_SESSION['message_error'])):?>
+    <div class='container'>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="alert alert-danger" role="alert">
+                    <div class="justify-content-beetwen">
+                        <button type="button" class="close" 
+                                                data-dismiss="alert" 
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                        </button>
+                        <?=$_SESSION['message_error'];
+                        unset($_SESSION['message_error']);?>
+                    </div>    
+                    
+                </div>
+            </div> 
+        </div>       
+    </div>
+    <?php else :?>
     <?php endif ;?>
-    <?= $content ?>
+    
+    
+    <?=$content ?>
 
     <!-- Footer -->
     <hr>
@@ -128,11 +178,11 @@
         </div>
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="public/vendor/jquery/jquery.min.js"></script>
-    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="publics/vendor/jquery/jquery.min.js"></script>
+    <script src="publics/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="public/js/clean-blog.min.js"></script>
+    <script src="publics/js/clean-blog.min.js"></script>
 </body>
 
 </html>
