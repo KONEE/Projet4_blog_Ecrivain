@@ -53,9 +53,39 @@ class Backend
             exit();
         }
     }
-    public function createA()
+    public function createA($pseudo,$email,$pass,$pass1)
     {
+         
+        //puplic function createA($pseudo,$email,$pass,$pass1)
         $connexionManager = new PostManager();
+        $existAdmin       = $connexionManager->existPseudo();
+        $existAdmin1      = $connexionManager->existEmail();
+        if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass1'])) {
+            if($existAdmin == 0 && $existAdmin1 == 0){
+                if ($_POST['pass'] !== $_POST['pass1']) {
+                    $_SESSION['message_error'] = 'les mots de passe sont pas identique';
+                    header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
+                    exit();
+                }else{
+                    $connexionManager->createUser();
+                    $_SESSION['message_succes'] = "Administrateur créé avec succes";
+                    header('Location: index.php?action=postArticle&' . $_SESSION['message_succes']);
+                    exit();
+                }
+
+            }else{
+                $_SESSION['message_error'] = "il existe un administrateur avec ce pseudo et/ou cet Email";
+                header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
+                exit();
+            }
+        }else{
+             $_SESSION['message_error'] = 'tous les champs sont pas remplir';
+                header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
+                exit();
+        }
+          
+        
+       /* $connexionManager = new PostManager();
         $existAdmin       = $connexionManager->existPseudo();
         $existAdmin1      = $connexionManager->existEmail();
         
@@ -69,7 +99,7 @@ class Backend
             $_SESSION['message_error'] = "il existe un administrateur avec ce pseudo et/ou cet Email";
             header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
             exit();
-        }
+        }*/
     }
     public function editPost($postId)
     {

@@ -65,7 +65,7 @@ ob_start();
                         <i class="fas fa-lock prefix grey-text"></i>
                         <input type="password" name="pass1" id="Form-pass1" class="form-control validate" placeholder="Confirmation de Mot de passe" required>
                         </div>
-                        <button class="btn btn-secondary" type="submit" id="btt">AJOUTER</button>
+                        <button class="btn btn-secondary" type="submit" >AJOUTER</button>
                         </form>
                         
                     </div>
