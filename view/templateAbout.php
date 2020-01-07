@@ -70,8 +70,8 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Jean Forteroche</h1>
-                        <span class="subheading">Ecrivain et <a class="navbar-brand"
-                                href="index.php?action=connexion">Administrateur du site</a></span>
+                        <p class="subheading">Ecrivain et <a class="navbar-brand"
+                                href="index.php?action=connexion">Administrateur du site</a></p>
                     </div>
                 </div>
             </div>

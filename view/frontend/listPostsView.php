@@ -3,24 +3,34 @@
 
 
 <div class='container'>
-<p>Derniers Articles du Blog :</p>
+<h3>Derniers Articles du Blog :</h3> 
     <?php while ($data=$posts->fetch()) { ?>
-        <div class="shadow p-3 mb-5 bg-white rounded">
-            <div class="row no-gutters bg-light position-relative">
-               
-                <div class="col-md-10 position-static p-4 pl-md-0">
-                    <h5 class="mt-0"><?=htmlspecialchars($data['title']).':'.' '?><em>le <?=$data['creation_date_fr'] ?></em>
-                    </h5>
-                    <div class="row">
-                        <div class="col-12 "><?=substr(substr($data['content'],0,100),0,strrpos(substr($data['content'],0,100),' ')).'...' ?>
+        
+        <div class= " shadow p-3 mb-5 bg-white rounded position-static  ">
+        <a href= " index.php?action=post&id=<?=$data['id'] ?>" class="btn btn-light stretched-link" >
+            <div class= " row no-gutters position-relative ">
+            
+                
+                    <h4 class="mt-0"><?=htmlspecialchars($data['title']).':'.' '?><em>le <?=$data['creation_date_fr'] ?></em>
+                    </h4>
+                    <div class="row" >
+                        
+                        <div class="col-12 ">
+                        <span class = "writting">
+                            <?=substr(substr($data['content'],0,100),0,strrpos(substr($data['content'],0,100),' ')).'...' ?>
+                            </span>
                         </div>
-                    </div><a href="index.php?action=post&amp;id=<?=$data['id'] ?>" class="stretched-link"></a>
+    
+                    </div>
+                
+            
             </div>
+            </a>
         </div>
-    </div><br><br>
+        
     <?php
         }
-         $posts->closeCursor();
+        $posts->closeCursor();
     ?>
 </div>
 <?php $content=ob_get_clean();?>

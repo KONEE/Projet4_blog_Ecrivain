@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= $title ?></title>
-    <link href="publics/css/style.css" rel="stylesheet" />
+    
     <link rel="shortcut icon" type="image/x-icon" href="publics/images/favicon.ico"/>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,7 +22,9 @@
         rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
+    <link href="publics/css/style.css" rel="stylesheet" />
     <link href="publics/css/clean-blog.min.css" rel="stylesheet">
+    
     
     <!--tinyMce -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
@@ -78,9 +80,9 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Jean Forteroche</h1>
-                        <span class="subheading">Ecrivain et 
+                        <h2 class="subheading">Ecrivain et 
                          <a class="navbar-brand" 
-                                href="index.php?action=connexion">Administrateur du site</a></span>    
+                                href="index.php?action=connexion">Administrateur du site</a></h2>    
                     </div>
                 </div>
             </div>
@@ -89,50 +91,32 @@
     
     <?php if(isset($_SESSION['message_succes'])):?>
     <div class='container'>
-        <!-- Modal 
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      Modal content
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        
-      </div>
-      
-    </div>
-  </div>-->
-    <div class="row justify-content-center">
-        <div class="col-4">
-        
-        <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
-            <div class="swal2-success-circular-line-left" id="backround-blanc1" ></div>
-            <span class="swal2-success-line-tip"></span>
-            <span class="swal2-success-line-long"></span>
-            <div class="swal2-success-ring"></div> 
-            <div class="swal2-success-fix" id="backround-blanc2" ></div>
-            <div class="swal2-success-circular-line-right" id="backround-blanc3" ></div>
+        <div class="row justify-content-center">
+            <div class="col-4">
             
-            </div>
-            <div class="alert alert-success" role="alert">
-                <div class="justify-content-beetwen">
-                        <button type="button" class="close" 
-                                        data-dismiss="alert" 
-                                        aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                                        
-                    <?=$_SESSION['message_succes'];
-                    unset($_SESSION['message_succes']);?>
-                </div> 
-            </div>
-        </div> 
-    </div>    
+            <div class="swal2-icon swal2-success swal2-animate-success-icon" id = "flexible">
+                <div class="swal2-success-circular-line-left" id="backround-blanc1" ></div>
+                <span class="swal2-success-line-tip"></span>
+                <span class="swal2-success-line-long"></span>
+                <div class="swal2-success-ring"></div> 
+                <div class="swal2-success-fix" id="backround-blanc2" ></div>
+                <div class="swal2-success-circular-line-right" id="backround-blanc3" ></div>
+                
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <div class="justify-content-beetwen">
+                            <button type="button" class="close" 
+                                            data-dismiss="alert" 
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                                            
+                        <?=$_SESSION['message_succes'];
+                        unset($_SESSION['message_succes']);?>
+                    </div> 
+                </div>
+            </div> 
+        </div>    
     </div>
     <?php elseif(isset($_SESSION['state'])):?>
     <div class='container'>
@@ -147,7 +131,7 @@
     <div class='container'>
         <div class="row justify-content-center">
             <div class="col-4">
-                <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;">
+                <div class="swal2-icon swal2-error swal2-animate-error-icon" id = "flexible">
                     <span class="swal2-x-mark">
                         <span class="swal2-x-mark-line-left"></span>
                         <span class="swal2-x-mark-line-right"></span>

@@ -54,17 +54,6 @@ if (isset($_GET['action'])) {
     } elseif ($_GET['action'] == 'createA') {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
              $callBackend -> createA($_POST['pseudo'],$_POST['email'],$_POST['pass'] , $_POST['pass1']) ;
-            /*if ($_POST['pass'] !== $_POST['pass1']) {
-                $_SESSION['message_error'] = 'les mots de passe sont pas identique';
-                header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
-                exit();
-            } elseif (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass1'])) {
-                $callBackend->createA();
-            } else {
-                $_SESSION['message_error'] = 'tous les champs sont pas remplir';
-                header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
-                exit();
-            }*/
         }
     } elseif ($_GET['action'] == 'deconnexion') {
         $callBackend->setIsConnect(false);

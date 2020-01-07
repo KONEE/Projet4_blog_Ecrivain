@@ -26,7 +26,12 @@ a
     text-decoration: none;
     color: blue;
 }
-
+.writting 
+{
+    text-transform:none;
+    font-weight: normal;
+    font-family: 'Lora','Times New Roman',serif;
+}
 
 /*****************Message Error et success de template***********/
 
@@ -1381,3 +1386,11 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swa
 #backround-blanc1 #backround-blanc2 #backround-blanc3{
     background-color: rgb(255, 255, 255);
 }
+
+#flexible{
+    display: flex;  
+}
+/*
+#image_head{
+    background-image: url('publics/images/home-bg.jpg');
+}*/

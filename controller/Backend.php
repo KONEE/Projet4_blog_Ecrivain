@@ -56,10 +56,10 @@ class Backend
     public function createA($pseudo,$email,$pass,$pass1)
     {
          
-        //puplic function createA($pseudo,$email,$pass,$pass1)
+        
         $connexionManager = new PostManager();
-        $existAdmin       = $connexionManager->existPseudo();
-        $existAdmin1      = $connexionManager->existEmail();
+        $existAdmin       = $connexionManager->existPseudo($pseudo);
+        $existAdmin1      = $connexionManager->existEmail($email);
         if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass']) && !empty($_POST['pass1'])) {
             if($existAdmin == 0 && $existAdmin1 == 0){
                 if ($_POST['pass'] !== $_POST['pass1']) {
@@ -67,7 +67,7 @@ class Backend
                     header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
                     exit();
                 }else{
-                    $connexionManager->createUser();
+                    $connexionManager->createUser($pseudo,$email);
                     $_SESSION['message_succes'] = "Administrateur créé avec succes";
                     header('Location: index.php?action=postArticle&' . $_SESSION['message_succes']);
                     exit();
@@ -79,27 +79,11 @@ class Backend
                 exit();
             }
         }else{
-             $_SESSION['message_error'] = 'tous les champs sont pas remplir';
+                $_SESSION['message_error'] = 'tous les champs sont pas remplir';
                 header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
                 exit();
         }
           
-        
-       /* $connexionManager = new PostManager();
-        $existAdmin       = $connexionManager->existPseudo();
-        $existAdmin1      = $connexionManager->existEmail();
-        
-        if ($existAdmin == 0 && $existAdmin1 == 0) {
-            $connexionManager->createUser();
-            $_SESSION['message_succes'] = "Administrateur créé avec succes";
-            header('Location: index.php?action=postArticle&' . $_SESSION['message_succes']);
-            exit();
-            
-        } else {
-            $_SESSION['message_error'] = "il existe un administrateur avec ce pseudo et/ou cet Email";
-            header('Location: index.php?action=postArticle&' . $_SESSION['message_error']);
-            exit();
-        }*/
     }
     public function editPost($postId)
     {
@@ -154,10 +138,5 @@ class Backend
             exit();
         }
     }
-    /* public function numComSig($postId){
-    $commentManager = new CommentManager();
-    $numL = $commentManager -> numCom($postId);
-    
-    }*/
     
 }

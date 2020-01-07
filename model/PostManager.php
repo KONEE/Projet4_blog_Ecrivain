@@ -7,7 +7,7 @@ class PostManager extends BddManager
     public function getPosts()
     {
         $db  = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC ');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM posts ORDER BY creation_date DESC ');
         return $req;
     }
     public function getPost($postId)
@@ -35,7 +35,7 @@ class PostManager extends BddManager
     public function deleteArticle($postId)
     {
         $bdd           = $this->dbConnect();
-        $post          = $bdd->prepare("DELETE FROM posts WHERE id=" . $_GET['id']);
+        $post          = $bdd->prepare("DELETE FROM posts WHERE id= ?" /*. $_GET['id']*/);
         $affectedLines = $post->execute(array(
             $postId
         ));
@@ -63,35 +63,35 @@ class PostManager extends BddManager
         $resultat = $req->fetch();
         return $resultat;
     }
-    public function createUser()
+    public function createUser($pseudo,$email)
     {
         $db         = $this->dbConnect();
         // Hachage du mot de passe
         $pass_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         // Insertion
-        $req        = $db->prepare('INSERT INTO membresAdmin(pseudo, pass /*,pass1*/, email, date_inscription) VALUES(?, ?/*,?*/, ?, CURDATE())');
+        $req        = $db->prepare('INSERT INTO membresAdmin(pseudo, pass, email, date_inscription) VALUES(?, ?, ?, CURDATE())');
         $resultat   = $req->execute(array(
-            $_POST['pseudo'],
+            $pseudo,// $_POST['pseudo'],
             $pass_hache,
-            $_POST['email']
+            $email// $_POST['email']
         ));
     }
-    public function existPseudo()
+    public function existPseudo($pseudo)
     {
         $db  = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM membresAdmin WHERE pseudo = ?');
         $req->execute(array(
-            $_POST['pseudo']
+            $pseudo//$_POST['pseudo']
         ));
         $resultat = $req->rowCount();
         return $resultat;
     }
-    public function existEmail()
+    public function existEmail($email)
     {
         $db  = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM membresAdmin WHERE email = ?');
         $req->execute(array(
-            $_POST['email']
+            $email// $_POST['email']
         ));
         $resultat = $req->rowCount();
         return $resultat;

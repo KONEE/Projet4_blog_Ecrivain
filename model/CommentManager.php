@@ -32,23 +32,17 @@ class CommentManager extends BddManager
         $commentSignal = $db->query('SELECT *,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE tag = 0 ORDER BY comment_date DESC');
         return $commentSignal;
     }
-    //compte le nombre de commentaires signalée d'un article 
-    /*public function numCom($postId){
-    $db = $this->dbConnect();
-    $num = $db->prepare('SELECT COUNT(*) FROM comments WHERE post_id = ? AND tag = 0 ');
-    $num->execute(array($postId));
-    return $num;
-    }*/
+    
     
     // Supprime un commentaire
     public function deleteCom($comId)
     {
         $db            = $this->dbConnect();
-        $comment       = $db->prepare("DELETE FROM comments WHERE id=" . $_GET['id']);
+        $comment       = $db->prepare("DELETE FROM comments WHERE id=  :id" /*. $_GET['id']*/);
         $affectedLines = $comment->execute(array(
-            $comId
+            'id' => $comId
         ));
-        // return $affectedLines;
+        
     }
     // suppression des commentaires liés a un articles
     public function deleteComments($postId)
@@ -63,7 +57,7 @@ class CommentManager extends BddManager
     public function tagCom($comId)
     {
         $db            = $this->dbConnect();
-        $comment       = $db->prepare("UPDATE comments SET tag = 0 WHERE id = " . $_GET['id']);
+        $comment       = $db->prepare("UPDATE comments SET tag = 0 WHERE id = ? " /*. $_GET['id']*/);
         $affectedLines = $comment->execute(array(
             $comId
         ));
@@ -71,7 +65,7 @@ class CommentManager extends BddManager
     public function validCom($comId)
     {
         $db            = $this->dbConnect();
-        $comment       = $db->prepare("UPDATE comments SET tag = 1 WHERE id=" . $_GET['id']);
+        $comment       = $db->prepare("UPDATE comments SET tag = 1 WHERE id= ?" /*. $_GET['id']*/);
         $affectedLines = $comment->execute(array(
             $comId
         ));

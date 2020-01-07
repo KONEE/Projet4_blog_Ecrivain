@@ -39,7 +39,7 @@ class Frontend
     public function sendMail($name, $mail, $message)
     {
         if (mail("saadokone@gmail.com", $name, $message)) {
-            header('Location: index.php?action=showContact&succes=Message envoyer avec succes!!!');
+            header('Location: index.php?action=showContact& succes = Message envoyé avec succès!!!');
             exit();
             
         } else {

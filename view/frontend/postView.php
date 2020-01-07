@@ -30,10 +30,10 @@
                     <div class="panel-body">
                         <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                             <input class="form-control" type="text" id="author" name="author" placeholder="Auteur"
-                                rows="3" />
+                                rows="3" required />
                             <br>
                             <textarea id="comment" name="comment" class="form-control" placeholder="Commentaires..."
-                                rows="3"></textarea>
+                                rows="3" required></textarea>
                             <br>
 
                             <input type="submit" id= "btt" class="btn btn-primary " value="POSTER" />
