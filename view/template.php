@@ -195,12 +195,12 @@
             </div>
         </div>
     </footer>
-    <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript 
     <script src="publics/vendor/jquery/jquery.min.js"></script>
-    <script src="publics/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="publics/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
 
-    <!-- Custom scripts for this template -->
-    <script src="publics/js/clean-blog.min.js"></script>
+    <!-- Custom scripts for this template 
+    <script src="publics/js/clean-blog.min.js"></script> -->
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
