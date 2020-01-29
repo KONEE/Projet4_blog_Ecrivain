@@ -2,10 +2,10 @@
 # Pictures
 publics/images/
 
-#font
+#fonts
 publics/fontawesome-free/
 
-
+#file test
 testGitignore.txt
 
-publics/images/about-bg.jpg
+

@@ -28,15 +28,7 @@
     
     <!--tinyMce -->
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: '#content',
-            entity_encoding : "raw",
-	        encoding: "UTF-8",
-            language : 'fr_FR',
-           
-        });
-    </script>
+   
     
     <!--chatbot
     <script src="https://account.snatchbot.me/script.js"></script>
@@ -201,6 +193,15 @@
 
     <!-- Custom scripts for this template 
     <script src="publics/js/clean-blog.min.js"></script> -->
+    <script>
+        tinymce.init({
+            selector: '#content',
+            entity_encoding : "raw",
+	        encoding: "UTF-8",
+            language : 'fr_FR',
+           
+        });
+    </script>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
