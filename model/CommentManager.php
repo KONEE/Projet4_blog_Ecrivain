@@ -29,7 +29,8 @@ class CommentManager extends BddManager
     public function getSignalCom()
     {
         $db            = $this->dbConnect();
-        $commentSignal = $db->query('SELECT *,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE tag = 0 ORDER BY comment_date DESC');
+        $commentSignal = $db->prepare('SELECT *,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE tag = 0 ORDER BY comment_date DESC');
+        $commentSignal -> execute();
         return $commentSignal;
     }
     
