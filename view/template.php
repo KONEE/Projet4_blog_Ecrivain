@@ -111,7 +111,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                                             
-                        <?=$_SESSION['message_succes'];
+                        <?=htmlspecialchars($_SESSION['message_succes']);
                         unset($_SESSION['message_succes']);?>
                     </div> 
                 </div>
@@ -122,7 +122,7 @@
     <div class='container'>
         <div class="alert alert-success" role="alert">
             <span class="d-flex justify-content-between">
-            <?=$_SESSION['state'];?>
+            <?=htmlspecialchars($_SESSION['state']);?>
                  <a class="text-secondary"  href='index.php?action=deconnexion'>Deconnecter</a>   
             </span>
         </div>
@@ -144,7 +144,7 @@
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                         </button>
-                        <?=$_SESSION['message_error'];
+                        <?=htmlspecialchars($_SESSION['message_error']);
                         unset($_SESSION['message_error']);?>
                     </div>    
                     

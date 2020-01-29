@@ -83,7 +83,7 @@
                                 aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-            <?=$_GET['succes'];?>
+            <?=htmlspecialchars($_GET['succes']);?>
         </div>
     </div>
     <?php elseif(isset($_GET['error'])):?>
@@ -94,7 +94,7 @@
                                 aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-            <?=$_GET['error'];?>
+            <?=htmlspecialchars($_GET['error']);?>
         </div>
     </div>
     <?php endif ;?>
