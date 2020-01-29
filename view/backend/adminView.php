@@ -90,7 +90,7 @@ ob_start();
 
 <div class="container">
     <div class="row justify-content-between">
-        <h2>Liste des articles</h2>
+        <h2 id = "titlePost">Liste des articles</h2>
         <a class="text-secondary"  href='index.php?action=signalComment'>Commentaires Signalés</a>
     </div>
 </div>
@@ -99,7 +99,7 @@ foreach ($articles as $article) {
     //  echo '<pre>';
     // print_r($article);
 ?>      
-       <div class="container">
+       <div class="container" >
 
                     <table class="table table-striped table-dark">
                         <thead>
