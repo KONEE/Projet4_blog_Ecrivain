@@ -8,4 +8,10 @@ publics/fontawesome-free/
 #file test
 testGitignore.txt
 
+#BD for pwd
+dbs196866.sql
+
+#add file config
+config.php
+
 

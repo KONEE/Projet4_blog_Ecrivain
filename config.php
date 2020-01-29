@@ -1,5 +1,5 @@
 <?php
-// Configuration des principales variables, indentifiants pour la BDD
+// Configuration des principales constante globale, indentifiants pour la BDD
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
