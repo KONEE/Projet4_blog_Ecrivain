@@ -1390,7 +1390,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swa
 #flexible{
     display: flex;  
 }
-@media only screen and (min-width: 375px) {
+@media only screen and (max-width: 375px) {
     #titlePost {
         display: none;
     }
