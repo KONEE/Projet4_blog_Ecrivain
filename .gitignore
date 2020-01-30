@@ -15,3 +15,9 @@ dbs196866.sql
 config.php
 
 
+#dependency
+publics/js/
+
+publics/css/clean-blog.css
+
+publics/css/clean-blog.min.css
