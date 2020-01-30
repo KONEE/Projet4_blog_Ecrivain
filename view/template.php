@@ -81,7 +81,7 @@
         </div>
     </header>
     
-    <?php if(isset($_SESSION['message_succes'])):?>
+    <?php if(isset(htmlspecialchars($_SESSION['message_succes']))):?>
     <div class='container'>
         <div class="row justify-content-center">
             <div class="col-4">
