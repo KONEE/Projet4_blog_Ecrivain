@@ -110,7 +110,7 @@
             </div> 
         </div>    
     </div>
-    <?php elseif(isset($_SESSION['state'])):?>
+    <?php elseif(isset(htmlspecialchars($_SESSION['state']))):?>
     <div class='container'>
         <div class="alert alert-success" role="alert">
             <span class="d-flex justify-content-between">
@@ -119,7 +119,7 @@
             </span>
         </div>
     </div>
-    <?php elseif(isset($_SESSION['message_error'])):?>
+    <?php elseif(isset(htmlspecialchars($_SESSION['message_error']))):?>
     <div class='container'>
         <div class="row justify-content-center">
             <div class="col-4">
@@ -150,7 +150,7 @@
     
     <?=$content ?>
 
-    <!-- Footer -->
+    <!-- Footer -- -->
     <hr>
     <footer>
         <div class="container">
